@@ -29,6 +29,7 @@ Native renders include menu, each form, pause, settings, upgrade choice, boss wi
 - Repeated room removal during restart: owner reference is cleared immediately after queueing a room for deletion.
 - UI minimum-size expansion: constraints are applied after theme/layout updates; upgrade text wraps within its card.
 - Opaque corners during temporary enemy death: opacity now multiplies the existing alpha mask.
+- Fresh-source editor shutdown: the first `--import --quit` cold run aborted (SIGABRT) after import. Coredump inspection found unsymbolized Godot frames on the main thread, with no OOM evidence. The exact cause is unconfirmed. The launcher now uses `--editor --quit-after 120`; two fresh checkouts completed import and game startup cleanly. The failed initial log is retained in `docs/qa_logs/cold_import_failure.log`. No project source was lost. The extracted diagnostic core was deleted.
 - Audio resource release on exit: stop playback before quitting and allow the audio thread to drain; checks reject resource leak logs.
 - Packed resource export lost enemy spawn positions in the installed engine build: spawn configuration now uses typed Vector2 arrays, with dedicated PCK validation.
 - Optional ledge reachability: original provisional jump and high ledges were incompatible. Full-jump strength and ledges are now coordinated and every optional ledge is physics-tested. Accelerated simulation is not used to measure jump trajectories.

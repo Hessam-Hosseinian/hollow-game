@@ -3,7 +3,7 @@ from pathlib import Path
 import subprocess, sys
 ROOT=Path(__file__).resolve().parents[1]
 LOGS=ROOT/'docs/qa_logs';LOGS.mkdir(parents=True,exist_ok=True)
-steps=[('assets',['/usr/bin/python', 'tools/validate_assets.py']),('import',['godot','--headless','--editor','--path',str(ROOT),'--import','--quit']),('integration',['godot','--headless','--path',str(ROOT),'--script','tests/test_suite.gd'])]
+steps=[('assets',['/usr/bin/python', 'tools/validate_assets.py']),('import',['godot','--headless','--editor','--path',str(ROOT),'--quit-after','120']),('integration',['godot','--headless','--path',str(ROOT),'--script','tests/test_suite.gd'])]
 if '--live' in sys.argv:
  steps.append(('live_combat',['godot','--headless','--path',str(ROOT),'--script','tests/live_combat_smoke.gd']))
 if '--render' in sys.argv:
