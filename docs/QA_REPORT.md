@@ -11,6 +11,7 @@ Test environment: installed Godot `4.7.2.stable.arch_linux.ed1daf0bf`, Linux, Co
 | Gameplay integration | PASS: 1257 checks, zero failures | `docs/qa_logs/integration.log` |
 | Live enemy/boss AI input smoke | PASS: all archetypes attack, all forms exercised | `docs/qa_logs/live_combat.log` |
 | Godot PCK export and startup | PASS: room spawns retained, initial encounter loaded | `docs/qa_logs/export_pack.log`, `docs/qa_logs/pack_smoke.log` |
+| Fresh source archive startup | PASS: automatic import and encounter startup without cache | `docs/qa_logs/cold_start.log` |
 | Packed-game integration | PASS: 1257 checks, zero failures | `docs/qa_logs/pack_integration.log` |
 | Graphical render smoke | PASS: 11 captures, clean shutdown | `docs/qa_logs/render.log` |
 
