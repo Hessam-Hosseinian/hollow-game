@@ -1,91 +1,174 @@
 # ASHEN VESSEL
 
-نسخه آلفای قابل‌بازی یک اکشن روگ‌لایک دوبعدی با فضای گوتیک تاریک. شخصیت بین چهار حالت **Whole / Flesh / Bone / Soul** تغییر می‌کند؛ هر فرم حرکت، حمله و توانایی مخصوص دارد و همه سلامت و انرژی مشترک دارند.
+A playable alpha of an original **2D dark gothic action roguelike**, built with Godot 4 and GDScript. Explore the Cathedral of Remains as an ancient vessel that can shift between four forms: **Whole, Flesh, Bone, and Soul**.
 
-نسخه فعلی شامل منو، حرکت و پرش، تبدیل اختیاری، مبارزه و علامت ترکیبی، سه نوع دشمن، شش چیدمان اتاق، مسیر تصادفی ده‌اتاقه، هشت ارتقای موقت، استراحتگاه، باس دو مرحله‌ای، پیروزی/مرگ، شروع دوباره، تنظیمات و صدا است. تصاویر شخصیت و موسیقی/افکت‌های صوتی **موقت** هستند؛ این نسخه انتشار هنری نهایی نیست.
+Each form has a distinct combat role and special ability. Health and Hollow Energy are shared, so choosing when to transform is central to survival.
 
-## اجرا
+![ASHEN VESSEL title screen](docs/screenshots/01_menu.png)
 
-بسته قابل‌اجرا در `builds/ashen-vessel-runtime.zip` و آرشیو کامل پروژه در `builds/ashen-vessel-source.zip` آماده شده‌اند.
+## Features
 
-Godot **4.7.2** نسخه نصب‌شده و آزمایش‌شده است. پروژه از Godot 4 و TileMapLayer استفاده می‌کند. برای بازی کردن به Python نیاز ندارید.
+- Four playable forms with voluntary, energy-based transformations.
+- Responsive movement, variable-height jumps, coyote time, jump buffering, and dodging.
+- Melee combat, parrying, healing attacks, dashes, spectral attacks, and temporary phasing.
+- Hollow Marks that reward attacking an enemy with a different form.
+- Three enemy archetypes with telegraphed attacks.
+- Seeded ten-room runs using six reusable layouts, with combat, reward, and recovery rooms.
+- Eight temporary upgrades and a two-phase final boss: **The Collector**.
+- Main menu, HUD, pause and settings screens, upgrade selection, victory, defeat, and restart.
+- Audio feedback and persistent volume, fullscreen, camera shake, and best-run settings.
 
-در پوشه پروژه:
+**Development status:** the gameplay loop is implemented and automatically tested. Character sprites, animations, music, and sound effects are temporary; final art production and human playtesting are still in progress.
+
+## Screenshots
+
+Actual in-engine captures from the current alpha. These show the temporary artwork and interface.
+
+### The Cathedral of Remains — Whole form
+
+![Whole form exploring the Cathedral of Remains](docs/screenshots/02_form_0.png)
+
+### The Collector — boss encounter
+
+![The Collector preparing an attack in the final arena](docs/screenshots/06_boss.png)
+
+### Choosing a run upgrade
+
+![Three temporary upgrades offered at an altar](docs/screenshots/05_upgrades.png)
+
+## Getting Started
+
+### Requirements
+
+- **Godot 4.7.2**, the version used to build and test this project.
+- Git to clone the repository.
+- Python with Pillow only for asset tools and validation; Python is not required to play.
+
+The project uses Godot's Compatibility renderer and `TileMapLayer`. Linux is the tested development platform. Windows export presets are included, but Windows builds have not been tested on Windows.
+
+### Run on Linux
+
+With `godot` available on your PATH:
 
 ```bash
+git clone https://github.com/Hessam-Hosseinian/hollow-game.git
+cd hollow-game
 ./run_game.sh
 ```
 
-یا:
+The launcher imports assets on the first run before starting the game.
+
+### Run in the Godot Editor
+
+Import `project.godot` into Godot, open the project, and press **F5**. To run only the main scene, open `scenes/main/main.tscn` and press **F6**.
+
+Once assets have been imported, you can also launch from the project directory:
 
 ```bash
-godot --path /home/hessam/kir
+godot --path .
 ```
 
-در ویرایشگر Godot، فایل `project.godot` را باز کنید و **F6** برای صحنه اصلی یا **F5** برای پروژه بزنید. اجرای نخست دارایی‌ها را وارد می‌کند. اندازه منطقی تصویر 640×360 و پنجره اولیه 1280×720 است. با رزولوشن غیرمضرب، حاشیه تصویر برای حفظ پیکسل‌ها طبیعی است.
+The internal resolution is **640×360**, with an initial **1280×720** window. Integer scaling preserves crisp pixels; other window sizes may show borders.
 
-بسته PCK با موتور Godot قابل اجراست:
+## Controls
 
-```bash
-godot --main-pack builds/ashen-vessel.pck
-```
-
-قالب‌های خروجی این دستگاه نصب نیستند؛ فایل مستقل `.exe` یا Linux binary هنوز ساخته نشده است. دو preset خروجی آماده‌اند. بعد از نصب قالب‌های **هم‌نسخه 4.7.2** از بخش Export در Godot، Linux/Windows را صادر کنید. Windows هنوز روی دستگاه Windows آزمایش نشده است.
-
-## کنترل‌ها
-
-| کلید | کار |
+| Input | Action |
 |---|---|
-| A / D یا جهت چپ و راست | حرکت |
-| Space | پرش؛ نگه داشتن = پرش بلندتر |
-| J | حمله معمولی |
-| K | توانایی فرم |
-| Shift یا L | جاخالی |
+| A / D or Left / Right arrows | Move |
+| Space | Jump; hold for a higher jump |
+| J | Basic attack |
+| K | Current form's special ability |
+| Shift or L | Dodge |
 | 1 / 2 / 3 / 4 | Whole / Flesh / Bone / Soul |
-| E | استفاده از محراب، استراحتگاه یا در خروج |
-| Esc | توقف/ادامه |
-| Mouse یا Tab / Enter | انتخاب منو و ارتقا |
+| E | Interact with an altar, recovery point, or exit |
+| Esc | Pause / resume |
+| Mouse or Tab / Enter | Navigate menus and select upgrades |
 
-**Whole:** هنگام ضربه دشمن K بزنید تا Parry کنید و انرژی بگیرید. **Flesh:** Devour در فاصله نزدیک آسیب زیاد می‌زند و فقط با برخورد موفق درمان می‌کند. **Bone:** Dash از دشمن رد می‌شود و علامت می‌گذارد. **Soul:** Phase از حمله‌ها محافظت می‌کند و همچنان با دیوار و کف برخورد دارد.
+## The Four Forms
 
-به دشمن علامت‌خورده با فرم دیگری حمله کنید تا آسیب اضافه و انرژی بگیرید. نوار بالای دشمن آماده‌شدن حمله را نشان می‌دهد. پس از کشتن دشمن‌ها، به در آبی سمت راست بروید و E بزنید. در اتاق پاداش/استراحت کنار محراب E بزنید. در مرحله دوم باس، تغییر فرم هنگام حمله پاداش دارد. وضعیت سلامت، انرژی و زمان آماده‌شدن توانایی در HUD دیده می‌شود.
+| Form | Role | Special ability |
+|---|---|---|
+| **Whole — The Guardian** | Balanced combat and defense | **Parry:** time K with an incoming attack to negate damage, stagger the enemy, apply a mark, and recover energy. |
+| **Flesh — The Devourer** | Heavy damage and sustain | **Devour:** a powerful close-range strike that heals only when it hits a valid enemy. |
+| **Bone — The Dancer** | Speed and positioning | **Bone Dash:** pass through enemies and apply Hollow Marks. |
+| **Soul — The Hollow** | Evasion and spectral combat | **Phase:** temporarily evade attacks while retaining collision with floors and walls. |
 
-برای تکرار مسیر، در منو عدد Seed وارد کنید. شروع مستقیم مسیر مشخص برای توسعه:
+Attack a marked enemy with a different form to trigger bonus damage and recover Hollow Energy. Watch enemy windup bars before committing to an attack.
+
+Defeat every enemy in a combat room to unlock the blue gate on the right, then press **E** nearby to advance. In reward and recovery rooms, press **E** at the central altar. During the boss's second phase, changing your attacking form earns bonus damage.
+
+Enter a numeric seed in the main menu to replay a room sequence. For development, start a seeded run directly:
 
 ```bash
 ./run_game.sh -- --autostart --seed=42
 ```
 
-## بررسی پروژه
+## Validation
 
-ابزارهای توسعه: Godot، Git و Python دارای Pillow. روی این دستگاه `/usr/bin/python` دارای Pillow است.
+The development scripts use `/usr/bin/python` and require Pillow for asset checks.
 
 ```bash
 /usr/bin/python tools/check_project.py
 /usr/bin/python tools/check_project.py --render --live
 ```
 
-دستور دوم به نمایشگر نیاز دارد و تصاویر رابط، فرم‌ها و باس را در `docs/screenshots/` ثبت می‌کند. گزارش‌های واقعی در `docs/qa_logs/` و خلاصه در `docs/QA_REPORT.md` هستند. آزمون‌ها از فایل ذخیره جداگانه استفاده می‌کنند تا تنظیمات شما تغییر نکند.
+The second command also exercises live enemy AI and captures screenshots. Rendering requires a graphical display. Tests use separate save files to avoid changing player settings.
 
-## وضعیت و محدودیت‌ها
+The recorded validation includes **1,257 gameplay checks** against both the source project and exported PCK, plus asset validation, live AI checks, and graphical captures. See the [QA report](docs/QA_REPORT.md) and [test logs](docs/qa_logs/) for results and limitations.
 
-چرخه کامل بازی با آزمون خودکار تأیید شده است. تعادل سختی، حس مبارزه و هدف زمان ۱۰–۱۵ دقیقه هنوز به چند دور بازی دستی نیاز دارند. انیمیشن‌ها کم‌فریم و موقت‌اند؛ موسیقی و صدا با سینتسایزر ساده ساخته شده‌اند. تصویر محیط با ابزار image_gen ساخته و نسخه‌ای موقت برای بازی آماده شده است؛ تبدیل اندازه به‌تنهایی آن را هنر نهایی پیکسلی نمی‌کند. کنترلر، تغییر کلیدها و ترجمه متن داخل بازی هنوز پیاده نشده‌اند. دشمن‌ها روی زمین حرکت می‌کنند؛ دشمن دوربرد به بازیکن روی سکو هم حمله می‌کند.
+## Building
 
-تنظیمات صدا، لرزش، تمام‌صفحه و بهترین نتیجه در مسیر `user://ashen_vessel.cfg` ذخیره می‌شوند. ارتقاها با شروع دور جدید پاک می‌شوند.
-
-## توسعه و تعویض دارایی‌ها
-
-برای بازسازی بسته و بررسی آن:
+Build a Godot PCK and validate it, including the full integration suite:
 
 ```bash
 /usr/bin/python tools/build_pack.py --deep
-/usr/bin/python tools/package_project.py
 ```
 
-تنظیمات فرم‌ها در `resources/forms/`، قوانین مبارزه در `resources/combat_rules.tres`، دشمن‌ها در `resources/enemies/`، ارتقاها در `resources/upgrades/` و اتاق‌ها در `resources/rooms/` هستند. تغییر این منابع از ویرایشگر انجام‌پذیر است.
+Run the resulting package with Godot:
 
-شیت شخصیت‌ها فعلاً 576×864 است: شش ستون و نه ردیف، هر فریم 96×96 با زمینه شفاف. ترتیب ردیف‌ها: idle، run، jump، fall، attack، special، hurt، transform، death. مبدأ پا را ثابت نگه دارید. در صورت تغییر تعداد/ابعاد فریم، `ActorVisual` را هم به‌روز کنید. مولدهای `tools/` فایل‌های موقت را بازتولید می‌کنند؛ آن‌ها را روی تصاویر نهایی جایگزین‌شده اجرا نکنید.
+```bash
+godot --main-pack builds/ashen-vessel.pck
+```
 
-مشخصات و وضعیت هر دارایی در `docs/ASSET_MANIFEST.md`، دستور تولید تصاویر در `docs/ASSET_PROMPTS.md` و راهنمای هنری در `docs/ART_BIBLE.md` ثبت شده‌اند. قدم بعدی: بازی دستی و تنظیم سختی، سپس تولید و جایگزینی انیمیشن‌های اصلی چهار فرم.
+A PCK requires the Godot runtime; it is not a standalone executable. The `builds/` directory is ignored by Git, so generated packages are not included in a repository clone.
 
-# hollow-game
+For standalone Linux or Windows builds, install the matching **Godot 4.7.2 export templates** and use the supplied export presets. Standalone desktop exports remain pending.
+
+## Current Limitations
+
+- Combat balance, game feel, and the target 10–15 minute run duration need further human playtesting.
+- Character and enemy sprites use temporary, low-frame-count animations.
+- Music and sound effects are original synthesized placeholders.
+- The cathedral background was generated with `image_gen`; its integrated rendition still needs a production pixel-art cleanup pass.
+- Controller support, control remapping, and in-game localization are not implemented.
+- Enemies move on the ground; ranged enemies can pressure players on platforms.
+
+Audio levels, camera shake, fullscreen preferences, and best-run statistics are stored in `user://ashen_vessel.cfg`. Upgrades reset when a new run begins.
+
+## Development and Asset Replacement
+
+Gameplay configuration is stored in editable Godot resources:
+
+| System | Location |
+|---|---|
+| Player forms | `resources/forms/` |
+| Combat and transformation rules | `resources/combat_rules.tres` |
+| Enemies | `resources/enemies/` |
+| Upgrades | `resources/upgrades/` |
+| Room layouts | `resources/rooms/` |
+
+Current character sheets are **576×864**: six columns and nine rows of **96×96** transparent frames. Animation rows are `idle`, `run`, `jump`, `fall`, `attack`, `special`, `hurt`, `transform`, and `death`. Keep the foot position and pivot consistent. Update `ActorVisual` if frame dimensions or counts change.
+
+The generators in `tools/` recreate temporary assets. Do not run them over finished replacement artwork.
+
+## Documentation
+
+- [Game design](docs/GAME_DESIGN.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Art bible](docs/ART_BIBLE.md)
+- [Asset manifest](docs/ASSET_MANIFEST.md)
+- [Asset generation prompts](docs/ASSET_PROMPTS.md)
+- [Development roadmap](docs/ROADMAP.md)
+- [QA report](docs/QA_REPORT.md)
+
+Next priorities are unassisted combat playtesting, difficulty tuning, and replacing the temporary four-form animation sheets with production artwork.
