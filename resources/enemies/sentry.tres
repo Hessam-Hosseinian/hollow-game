@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+title = "Bone Sentry"
+archetype = "sentry"
+health = 55.0
+damage = 14.0
+speed = 42.0
+telegraph = 0.85
+recovery = 1.15
+reach = 250.0
+size_scale = 1
+body_height = 62.0
+sprite_path = "res://assets/enemies/sentry.png"

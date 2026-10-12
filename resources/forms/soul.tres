@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FormData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/core/form_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+title = "Soul"
+role = "The Hollow"
+speed = 150.0
+damage = 16.0
+defense = 1.1
+recovery = 0.32
+special_name = "PHASE"
+special_cost = 22.0
+special_cooldown = 3.2
+sprite_path = "res://assets/characters/soul.png"
+tint = Color(0.36470588235294116, 0.5607843137254902, 0.6627450980392157, 1)

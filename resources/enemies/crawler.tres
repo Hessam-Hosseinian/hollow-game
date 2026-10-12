@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+title = "Ash Crawler"
+archetype = "crawler"
+health = 45.0
+damage = 12.0
+speed = 66.0
+telegraph = 0.65
+recovery = 0.8
+reach = 52.0
+size_scale = 1.0
+body_height = 32.0
+sprite_path = "res://assets/enemies/crawler.png"

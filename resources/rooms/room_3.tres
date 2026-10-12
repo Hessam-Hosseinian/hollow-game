@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/world/room_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+title = "Sepulchral Gallery"
+width = 1280
+platforms = Array[Rect2]([Rect2(256, 220, 160, 16), Rect2(608, 236, 160, 16), Rect2(960, 220, 96, 16)])
+enemy_spawns = Array[Vector2]([Vector2(460,300),Vector2(660,300),Vector2(840,300),Vector2(1020,300),Vector2(1160,300)])

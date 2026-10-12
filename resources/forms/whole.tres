@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FormData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/core/form_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+title = "Whole"
+role = "The Guardian"
+speed = 140.0
+damage = 24.0
+defense = 0.85
+recovery = 0.34
+special_name = "PARRY"
+special_cost = 0.0
+special_cooldown = 0.9
+sprite_path = "res://assets/characters/whole.png"
+tint = Color(0.8313725490196079, 0.7725490196078432, 0.6274509803921569, 1)

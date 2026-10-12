@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FormData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/core/form_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+title = "Bone"
+role = "The Dancer"
+speed = 185.0
+damage = 17.0
+defense = 1.2
+recovery = 0.23
+special_name = "BONE DASH"
+special_cost = 12.0
+special_cooldown = 1.3
+sprite_path = "res://assets/characters/bone.png"
+tint = Color(0.9058823529411765, 0.8666666666666667, 0.7490196078431373, 1)
